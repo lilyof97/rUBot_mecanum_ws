@@ -35,10 +35,14 @@ catkin_make
 ## **3. Sensors description**
 
 In this project's air quality control circuit, three different sensors will be used to assure accurate and reliable CO2 atmosphere levels as well as humidity and temperature values:
+
 *foto mq2*
 - The first sensor used is an MQ2 gas sensor,  that detects concentrations of different air gases such as propane, methane, hydrogen, alcohol, smoke and carbon monoxide. The gas' concentration is measured using a voltage divider network and the values are given in ppm (parts per million)
+- 
 *foto dht22*
 - The second sensor is a temperature and humidity sensor, the DHT22. It offers a high precision data acquisiton and stability due to it's temperature compensation and calibration. Humidity values are given in percentage units (%) and temperature values are given in degrees celcius (ºC).
+- 
 *foto scd30*
 - The third and biggest sensor is the SCD30 Sensirion sensor, that measures carbon dioxide, temperature and humidity air values. The CO2 levels are given in ppm. Its main characteristic is its small size and height, which allows easy integration into different applications.
+This particular sensor will be key for the whole air quality control device since the CO2 air concentration value is what will switch the ozone generator on and off.
 ```
