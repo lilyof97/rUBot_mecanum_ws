@@ -45,13 +45,89 @@ In this project's air quality control circuit, three different sensors will be u
 *foto scd30*
 - The third and biggest sensor is the SCD30 Sensirion sensor, that measures carbon dioxide, temperature and humidity air values. The CO2 levels are given in ppm. Its main characteristic is its small size and height, which allows easy integration into different applications.
 This particular sensor will be key for the whole air quality control device since the CO2 air concentration value is what will switch the ozone generator on and off.
-```
 
 ## **4. Ozone generator device description**
 
 ## **5. PCB Board design**
 
 ## **6. Arduino Code**
+
+The air quality control device is controlled by the ESP32. Every circuit's component will be connected to the Arduino, including the ozone generator. 
+An Arduino code is generated via Arduino Cloud to fetch and control every sensor's data. Its main aim is to display the fetched data on to the Arduino Cloud's Dashboard, so users can have access to CO2, gas, humidity and temperature air levels via IoT.
+
+The first step is to include and define every sensor's library and ID. It is also important to identify the ESP32's pins that will be connected to every sensor:
+
+```shell
+#include <Wire.h>
+#include <DHT.h>         //Include library for the DTH22 sensor
+#define DHTTYPE  DHT22   //Define DHT22 sensor as DHT22
+#define DHTPIN    4      // Define the ESP32 pin that enables connection with the DHT22 (in this case, pin number 4)
+#include <SparkFun_SCD30_Arduino_Library.h> //Include library for the SCD30 sensor
+#include <arduino-timer.h>
+
+SCD30 airSensor;                            //Define the SCD30 sensor as airSensor
+
+int Sensor_input = 34;                      //Define the ESP32 pin that enables connection with the MQ2 (pin number 34)
+
+auto sensor_timer = timer_create_default(); //Create auto timer to fetch data periodically
+
+DHT dht(DHTPIN, DHTTYPE, 22);               //Define the DHT22
+
+#include "thingProperties.h"
+```
+
+Next, a boolean function is created to allow periodical data fetching from the sensors:
+
+```shell
+bool get_sensor_readings(void *) {
+  readValues();
+  return true; // repeat? true
+}
+```
+
+A setup void is needed to initiate the sensors' and Arduino Cloud's connection. In the same void, the speed of data readings is indicated.
+
+```shell
+void setup()
+{
+  Serial.begin(115200);
+  
+  pinMode(23, OUTPUT);    //Define pin 23 from the ESP32 as an output. This will control the ozone generator's switch on and off.
+  digitalWrite(23, LOW);  //The output has a low value (0) by default
+  
+  // Defined in thingProperties.h
+  initProperties();
+
+  // Connect to Arduino IoT Cloud
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+  
+  /*
+     The following function allows you to obtain more information
+     related to the state of network and IoT Cloud connection and errors
+     the higher number the more granular information you’ll get.
+     The default is 0 (only errors).
+     Maximum is 4
+ */
+  setDebugMessageLevel(2);
+  ArduinoCloud.printDebugInfo();
+    
+  dht.begin();                      //Begin the DHT22 sensor
+  Wire.begin();                     //Begin wire
+
+  if (airSensor.begin() == false)   //If the SCD30 sensor is not detected, the code will freeze
+  {
+    Serial.println("Air sensor not detected. Please check wiring. Freezing...");
+    while (1)
+      ;
+  }
+
+  sensor_timer.every(5000, get_sensor_readings);  //Fetch data every 5000 ms
+}
+```
+
+*to be completed* 
+
+Here's the full application code:
 
 ```shell
 /*
