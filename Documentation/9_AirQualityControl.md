@@ -92,7 +92,7 @@ void setup()
 {
   Serial.begin(115200);
   
-  pinMode(23, OUTPUT);    //Define pin 23 from the ESP32 as an output. This will control the ozone generator's switch on and off
+  pinMode(23, OUTPUT);    //Define pin 23 from the ESP32 as an output, this will control the ozone generator's switch on and off
   digitalWrite(23, LOW);  //The output has a low value (0) by default
   
   // Defined in thingProperties.h
