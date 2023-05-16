@@ -36,15 +36,15 @@ catkin_make
 
 In this project's air quality control circuit, three different sensors will be used to assure accurate and reliable CO2 atmosphere levels as well as humidity and temperature values:
 
-![](./Images/air_quality/mq2.PNG)
+*MQ2 Gas sensor*: ![](./Images/air_quality/mq2.PNG)
 
 - The first sensor used is an MQ2 gas sensor,  that detects concentrations of different air gases such as propane, methane, hydrogen, alcohol, smoke and carbon monoxide. The gas' concentration is measured using a voltage divider network and the values are given in ppm (parts per million)
 
-![](./Images/air_quality/dht22.PNG)
+*DHT22 temperature and humidity sensor*: ![](./Images/air_quality/dht22.PNG)
 
 - The second sensor is a temperature and humidity sensor, the DHT22. It offers a high precision data acquisiton and stability due to it's temperature compensation and calibration. Humidity values are given in percentage units (%) and temperature values are given in degrees celcius (ºC).
 
-![](./Images/air_quality/scd30.PNG)
+*SCD30 CO2, temperature and humidity sensor*: ![](./Images/air_quality/scd30.PNG)
 
 - The third and biggest sensor is the SCD30 Sensirion sensor, that measures carbon dioxide, temperature and humidity air values. The CO2 levels are given in ppm. Its main characteristic is its small size and height, which allows easy integration into different applications.
 This particular sensor will be key for the whole air quality control device since the CO2 air concentration value is what will switch the ozone generator on and off.
@@ -55,7 +55,7 @@ An ozone generator is a device that intentionally produces ozone gas. Ozone (O3)
 
 The ozone generator used in this application is the "Handy Ozone Generator" by Feel Lagoom. It is a small device (15 x 15 cm) that works thanks to an integrated lithium battery that lasts up to 15h before needing to be recharged. For the circuit being, this integrated battery will not be used and the generator will be connected to a 5V pin from the ESP32. 
 
-![](./Images/air_quality/generador_ozo.PNG)
+*Handy Ozone Generator*: ![](./Images/air_quality/generador_ozo.PNG)
 
 The device will be switched off by default, and will only be switched on when the CO2 levels detected by the SCD30 sensor are above a chosen threshold value. The CO2 air value is usually around 800 ppm in normal conditions, and will be considered harmful for health when it reaches values above 1200 ppm (for this specific application and its scope). Every time the 1200 ppm threshold is surpassed, the ozone generator will switch on and start to purify air, when the CO2 value goes down again under 1200 ppm, the ozone generator will switch off.
 
