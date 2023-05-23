@@ -69,6 +69,13 @@ The device will be switched off by default, and will only be switched on when th
 
 ## **5. PCB Board design**
 
+To design this circuit's PCD Board, various factors had to be taken into consideration. The first and most important one, the ESP32 Arduino had to be positioned in a way that allowed it's connection to every component that conforms the board, this means that it has to be placed at the center of the board **(1)**. Once the ESP32 is placed, the different sensors can be positioned around it. 
+The sensors' board position depend on their connections to the ESP32. The DHT22 sensor has connections to the right-side of the Arduino (pins 3V3 to GPIO23) and the MQ2 has connections to the left-side of the Arduino (pins VIN to RESET). Knowing this, the DTH22 will be placed on the right side of the Arduino **(2)** and the MQ2 on the left side **(3)**. 
+The only thing left to place on the board is the CO2 detection and O2 generation circuit. It is conformed by the SCD30, an LED, a transistor and an ozone generator. All of these components have to be placed close to each other, since they're interconnected. Plus, the SCD30 and the ozone generator are connected to the ESP32, either for power supply or I2C sensor data connection. The SCD30 will be placed near the ESP32 **(4)**, and the ozone generator near the border of the PCB, leaving a considerable amount of space around it since it's a quite big device **(5)**. In between these two components the LED and the transistor will be placed **(6)**.
+After all the placements are made, the PCB tracks are created. These are traced in the most efficient possible way, avoiding 90 degree angles and always making sure the distance between which one of them is sufficient to avoid creating a short circuit. 
+The final product is an 11 x 11 cm PCB Board where components can be easily recognasible.
+
+
 ## **6. Arduino Code**
 
 The air quality control circuit is controlled by the ESP32. Every circuit's component will be connected to the Arduino, including the ozone generator. 
