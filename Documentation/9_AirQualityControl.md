@@ -145,7 +145,114 @@ void setup()
 }
 ```
 
-*to be completed* 
+In the main code loop, there are two essential functions:
+- ArduinoCloud.update(): it is called to update the values on the cloud and the status of the update is displayed on the screen (or dashboard)
+- sensor_timer.tick(): it sets a timer that calls a function which indicates when it is time to fetch data (in this case, every 5000 ms)
+
+```shell
+void loop()
+{
+  ArduinoCloud.update();
+  
+  sensor_timer.tick();
+}
+```
+The readValues() void is responsible for every data reading, for each one of the sensors used. Here, the values will be read from the sensors and written onto the ArduinoCloud's display and dashboard created for this specific application.
+
+```shell
+void readValues(){  
+  humedad = dht.readHumidity();                 //Read humidity from DHT22. The value will be saved as "humedad"
+  temperatura = dht.readTemperature();          //Read temperature from DHT22. The value will be saved as "temperatura"
+  gas_combustible = analogRead(Sensor_input);   //Read gas from the MQ2. The value will be saved as "gas_combustible"
+  humedad_SCD = airSensor.getHumidity();        //Read humidity from the SC30. The value will be saved as "humedad_SCD"
+  temperatura_SCD = airSensor.getTemperature(); //Read temperature from the SC30. The value will be saved as "temperatura_SCD"
+  cO2 = airSensor.getCO2();                     //Read CO2 from the SC30. The value will be saved as "cO2"
+  
+  //Data is printed
+  Serial.println("Humedad: "); 
+  Serial.println(humedad);
+  Serial.println("Temperatura: ");
+  Serial.println(temperatura);
+  Serial.println("Gas Sensor: ");  
+  Serial.print(gas_combustible);   
+  Serial.print("\t");
+  Serial.print("\t");
+  
+  //If MQ2's gas values are above 1500 ppm, there will be a warning indicating that there's too much gas
+  if (gas_combustible > 1500) {    
+    Serial.println("Gas");  
+  }
+  else {
+    Serial.println("No Gas");
+  }
+  
+  Serial.println(cO2);
+  Serial.println(temperatura_SCD, 1);
+  Serial.println(humedad_SCD, 1);
+  Serial.println("Waiting for new data");
+  
+  //If the CO2 SC30's levels are above 1000 ppm, the ozone generator will switch on
+  if (cO2 > 1000)
+  {
+  pinMode(23, OUTPUT);
+  digitalWrite(23, HIGH);
+  }
+  else {
+  digitalWrite(23, LOW);   //Otherwise, it will be switched off
+  }
+  
+  delay(500);
+}
+```
+Finally, there are voids that are automatically created when new variables are defined. These variables correspond to each one of the sensors' data collection type. These voids are empty.
+
+```shell
+/*
+  Since Humedad is READ_WRITE variable, onHumedadChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onHumedadChange()  {
+  // Add your code here to act upon Humedad change
+}
+/*
+  Since Temperatura is READ_WRITE variable, onTemperaturaChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onTemperaturaChange()  {
+  // Add your code here to act upon Temperatura change
+}
+/*
+  Since GasCombustible is READ_WRITE variable, onGasCombustibleChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onGasCombustibleChange()  {
+  // Add your code here to act upon GasCombustible change
+}
+/*
+  Since HumedadSCD is READ_WRITE variable, onHumedadSCDChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onHumedadSCDChange()  {
+  // Add your code here to act upon HumedadSCD change
+}
+/*
+  Since TemperaturaSCD is READ_WRITE variable, onTemperaturaSCDChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onTemperaturaSCDChange()  {
+  // Add your code here to act upon TemperaturaSCD change
+}
+/*
+  Since CO2SCD is READ_WRITE variable, onCO2SCDChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+
+void onCO2Change()  {
+  // Add your code here to act upon CO2 change
+}
+```
+
+
 
 Here's the full application code:
 
