@@ -77,7 +77,7 @@ The only thing left to place on the board is the CO2 detection and O2 generation
 
 After all the placements are made, the PCB tracks are created. These are traced in the most efficient possible way, avoiding 90 degree angles and always making sure the distance between which one of them is sufficient to avoid creating a short circuit. 
 
-The final product is an 11 x 11 cm PCB Board where components can be easily recognasible.
+The final product is an 11 x 11 cm PCB Board where components can be easily recognisable.
 
 
 ## **6. Arduino Code**
