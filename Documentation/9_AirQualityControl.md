@@ -6,15 +6,16 @@ The mechanical structure is descrived bellow:
 ![](./Images/rubot_custom/1_osoyoo.png)
 
 His main characteristics are: 
-- contains a Raspberri Pi 4 that will allow the rubot's connection to the IoT and will control it's movement
-- has four omnidirectional wheels that allow the robot to move in any desired direction
-- contains a LIDAR (Laser Imaging Detection and Ranging), which determines ranges by targeting an object or surface via an infrared laser
-- has a camera that allows the visualization of the rubot's environment via 3D visualizations software tools
-- *to be continued*
+- **Raspberri Pi 4**: allows rubot's connection to the IoT and will control it's movement
+- **Arduino Mega**: controls sensors and wheel's actuators
+- **four omnidirectional wheels**: allow the robot to move in any desired direction
+- **LIDAR (Laser Imaging Detection and Ranging)**: determines ranges by targeting an object or surface via an infrared laser, will allow object detection
+- **two Logitech C270 cameras**: allow visualization of the rubot's environment via 3D visualizations software tools
+
 
 In this document we will describe:
 - Device structure
-- Web arduino SW description
+- Web Arduino IoT Cloud SW description
 - Sensors description
 - Ozone generation device description
 - PCB board design
@@ -31,6 +32,44 @@ catkin_create_pkg rubot_mecanum_description rospy
 cd ..
 catkin_make
 ```
+## **2. Web Arduino IoT Cloud SW description**
+To code this project's Arduino software, we will use the Arduino IoT Cloud web. This web is a platform that allows any user to create IoT Arduino projects and allows code writing, code uploading to any Arduino device that has Wi-Fi connection and data visualization thanks to a serial monitor or widget dashboard. The main advantage of this platform is that data will refresh and synchronise with the Arduino board even is the board is not connected to the PC. In other words, if the Arduino board is connected to a Wi-Fi network, the dashboard's data will continue to update in real time thanks to its connection to the IoT. To access the Arduino Cloud web, we will have to sign in into the Cloud and create an Arduino account.  
+
+FOTO IOT CLOUD
+
+Once the Arduino account is created, the first thing to do when we want to create a new IoT Cloud project, is to set up a device onto the cloud. This can be easily done via the "Device" tab configuration.
+
+FOTO CONGIRUACION
+
+To configure the device, we will have to choose the "Set up a 3rd Party device" option. 
+
+FOTO CONFIGURACION 
+
+Then, we can create a new Thing. In the Thing overview, we will have to configurate what Arduino device will be used, the Wi-Fi network we want to connect to and create variables that we can monitor and control. All changes made in the Thing overview will be automatically generated into the sketch file.
+
+FOTO THING
+
+The next step is to create the project's variables via the "Add" button in the Thing overview. These variables can be of various types (float, integer, string, etc.) and can be defined as a read and/or write type variable. They are automatically generated into the sketch file and the variable's data will be monitored via the widget dashboard. 
+
+FOTO VARIABLE
+
+The Sketch file is where the device programming takes place. In this sketch, we will have to include all libraries and code lines needed for the application to work. Once the program is finished, we can upload it to the board by clicking the "Upload" button. To quickly view obtained data, we can open the Serial monitor. 
+
+FOTO SKECTH 
+
+The last step is to create a new widget Dashboard via the "Dashboard" tab. We can include basically any king of widget to allow the visual representation of the variables we create. Here's an example of a dashboard with Gauge and Chart widgets:
+
+FOTO DASHBOARD
+
+It is important to link the widgets to our Thing's variables so data can be monitored. This can be done by editing the settings of the desired widget.
+
+FOTO CONFIG WIDGET
+
+**Extra step**: If we want to take it to the next level, we can also download the IoT Remote app into our phones so we can monitor data without the need of a pc. The only thing needed is connection to a Wi-Fi network and to log in to the Arduino app with our Arduino account.
+
+FOTO ARDUINO MOVIL
+
+
 
 ## **3. Sensors description**
 
