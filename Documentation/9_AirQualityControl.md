@@ -39,19 +39,19 @@ FOTO IOT CLOUD
 
 Once the Arduino account is created, the first thing to do when we want to create a new IoT Cloud project, is to set up a device onto the cloud. This can be easily done via the "Device" tab configuration.
 
-FOTO CONGIRUACION
+![](./Images/air_quality/device_configuration.PNG)
 
 To configure the device, we will have to choose the "Set up a 3rd Party device" option. 
 
-FOTO CONFIGURACION 
+![](./Images/air_quality/DEVICE_CONFIGURATION_1.PNG)
 
 Then, we can create a new Thing. In the Thing overview, we will have to configurate what Arduino device will be used, the Wi-Fi network we want to connect to and create variables that we can monitor and control. All changes made in the Thing overview will be automatically generated into the sketch file.
 
-FOTO THING
+![](./Images/air_quality/thing.PNG)
 
 The next step is to create the project's variables via the "Add" button in the Thing overview. These variables can be of various types (float, integer, string, etc.) and can be defined as a read and/or write type variable. They are automatically generated into the sketch file and the variable's data will be monitored via the widget dashboard. 
 
-FOTO VARIABLE
+![](./Images/air_quality/variable.PNG)
 
 The Sketch file is where the device programming takes place. In this sketch, we will have to include all libraries and code lines needed for the application to work. Once the program is finished, we can upload it to the board by clicking the "Upload" button. To quickly view obtained data, we can open the Serial monitor. 
 
@@ -63,7 +63,7 @@ FOTO DASHBOARD
 
 It is important to link the widgets to our Thing's variables so data can be monitored. This can be done by editing the settings of the desired widget.
 
-FOTO CONFIG WIDGET
+![](./Images/air_quality/widget_settings.PNG)
 
 **Extra step**: If we want to take it to the next level, we can also download the IoT Remote app into our phones so we can monitor data without the need of a pc. The only thing needed is connection to a Wi-Fi network and to log in to the Arduino app with our Arduino account.
 
