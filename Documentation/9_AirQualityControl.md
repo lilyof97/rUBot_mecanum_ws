@@ -68,7 +68,7 @@ It is important to link the widgets to our Thing's variables so data can be moni
 
 **Extra step**: If we want to take it to the next level, we can also download the IoT Remote app into our phones so we can monitor data without the need of a pc. The only thing needed is connection to a Wi-Fi network and to log in to the Arduino app with our Arduino account.
 
-![](./Images/air_quality/movil_dashboard.PNG)
+![](./Images/air_quality/movil.PNG)
 
 
 ## **3. Sensors description**
