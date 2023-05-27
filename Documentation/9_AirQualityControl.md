@@ -37,7 +37,7 @@ To code this project's Arduino software, we will use the Arduino IoT Cloud web. 
 
 ![](./Images/air_quality/IOT_CLOUD.PNG)
 
-Once the Arduino account is created, the first thing to do when we want to create a new IoT Cloud project, is to set up a device onto the cloud. This can be easily done via the "Device" tab configuration.
+**1.** Once the Arduino account is created, the first thing to do when we want to create a new IoT Cloud project, is to set up a device onto the cloud. This can be easily done via the "Device" tab configuration.
 
 ![](./Images/air_quality/device_configuration.PNG)
 
@@ -45,19 +45,19 @@ To configure the device, we will have to choose the "Set up a 3rd Party device" 
 
 ![](./Images/air_quality/DEVICE_CONFIGURATION_1.PNG)
 
-Then, we can create a new Thing. In the Thing overview, we will have to configurate what Arduino device will be used, the Wi-Fi network we want to connect to and create variables that we can monitor and control. All changes made in the Thing overview will be automatically generated into the sketch file.
+ **2.** Then, we can create a new Thing. In the Thing overview, we will have to configurate what Arduino device will be used, the Wi-Fi network we want to connect to and create variables that we can monitor and control. All changes made in the Thing overview will be automatically generated into the sketch file.
 
 ![](./Images/air_quality/thing.PNG)
 
-The next step is to create the project's variables via the "Add" button in the Thing overview. These variables can be of various types (float, integer, string, etc.) and can be defined as a read and/or write type variable. They are automatically generated into the sketch file and the variable's data will be monitored via the widget dashboard. 
+**3.** The next step is to create the project's variables via the "Add" button in the Thing overview. These variables can be of various types (float, integer, string, etc.) and can be defined as a read and/or write type variable. They are automatically generated into the sketch file and the variable's data will be monitored via the widget dashboard. 
 
 ![](./Images/air_quality/variable.PNG)
 
-The Sketch file is where the device programming takes place. In this sketch, we will have to include all libraries and code lines needed for the application to work. Once the program is finished, we can upload it to the board by clicking the "Upload" button. To quickly view obtained data, we can open the Serial monitor. 
+**4.** The Sketch file is where the device programming takes place. In this sketch, we will have to include all libraries and code lines needed for the application to work. Once the program is finished, we can upload it to the board by clicking the "Upload" button. To quickly view obtained data, we can open the Serial monitor. 
 
 FOTO SKECTH 
 
-The last step is to create a new widget Dashboard via the "Dashboard" tab. We can include basically any king of widget to allow the visual representation of the variables we create. Here's an example of a dashboard with Gauge and Chart widgets:
+**5.** The last step is to create a new widget Dashboard via the "Dashboard" tab. We can include basically any king of widget to allow the visual representation of the variables we create. Here's an example of a dashboard with Gauge and Chart widgets:
 
 FOTO DASHBOARD
 
