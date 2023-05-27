@@ -65,6 +65,8 @@ The movement of the robot can also be controlled by:
 - keyboard or a joypad
 - pragramatically in python creating a "/rubot_nav" node
 
+![](./Images/1_mecanum_bringup.png)
+
 **b) Air quality control circuit structure**
 
 The air quality control circuit's main goal is to detect when the CO2 air concentration is too high so it can switch on an ozone generator that will help purify the air and bring the CO2 levels back to safe values. This data will be available to users via an Arduino IoT Cloud and accessible via pc an mobile devices. The circuit will be integrated into a PCB and it will be powered by the 5V rUBot's battery:
@@ -75,7 +77,7 @@ The air quality control circuit's main goal is to detect when the CO2 air concen
 - a MOSFET transistor that will help switch on and off the ozone generator
 - an LED that will indicate when the ozone generator is on
 
-This circuit will be mounted on top of the rUBot's platform and will be fetching data while the rUBot moves. 
+This circuit will be mounted on top of the rUBot's platform and will be fetching data and generating ozone when needed while the rUBot moves. 
 
 
 ## **2. Web Arduino IoT Cloud SW description**
