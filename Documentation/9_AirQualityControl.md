@@ -114,7 +114,7 @@ The sensors' board position depend on their connections to the ESP32. The DHT22 
 
 The only thing left to place on the board is the CO2 detection and O2 generation circuit. It is conformed by the SCD30, an LED, a transistor and an ozone generator. All of these components have to be placed close to each other, since they're interconnected. Plus, the SCD30 and the ozone generator are connected to the ESP32, either for power supply or I2C sensor data connection. The SCD30 will be placed near the ESP32 **(4)**, and the ozone generator near the border of the PCB, leaving a considerable amount of space around it since it's a quite big device **(5)**. In between these two components the LED and the transistor will be placed **(6)**.
 
-![](./Images/air_quality/pcb.PNG)
+![](./Images/air_quality/pcb.png)
 
 After all the placements are made, the PCB tracks are created. These are traced in the most efficient possible way, avoiding 90 degree angles and always making sure the distance between which one of them is sufficient to avoid creating a short circuit. Plus, we will make sure that all tracks end on the same layer side so pins can be easily welded into the board. 
 The last step is to pour a GND layer on both sides of the board to maximise its performance and avoid intereferences between signals. 
