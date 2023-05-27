@@ -75,19 +75,19 @@ FOTO ARDUINO MOVIL
 
 In this project's air quality control circuit, three different sensors will be used to assure accurate and reliable CO2 atmosphere levels as well as humidity and temperature values:
 
-*MQ2 Gas sensor*: 
+**MQ2 Gas sensor**: 
 
 ![](./Images/air_quality/mq2.PNG)
 
 - The first sensor used is an MQ2 gas sensor,  that detects concentrations of different air gases such as propane, methane, hydrogen, alcohol, smoke and carbon monoxide. The gas' concentration is measured using a voltage divider network and the values are given in ppm (parts per million)
 
-*DHT22 temperature and humidity sensor*: 
+**DHT22 temperature and humidity sensor**: 
 
 ![](./Images/air_quality/dht22.PNG)
 
 - The second sensor is a temperature and humidity sensor, the DHT22. It offers a high precision data acquisiton and stability due to it's temperature compensation and calibration. Humidity values are given in percentage units (%) and temperature values are given in degrees celcius (ºC).
 
-*SCD30 CO2, temperature and humidity sensor*:
+**SCD30 CO2, temperature and humidity sensor**:
 
 ![](./Images/air_quality/scd30.PNG)
 
