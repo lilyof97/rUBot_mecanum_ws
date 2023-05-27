@@ -2,7 +2,7 @@
 
 We have designed and assembled an IoT closed loop air quality control device to be mounted on rUBot_2.0 prototype.
 
-The mechanical structure is descrived bellow:
+The mechanical structure is described bellow:
 ![](./Images/rubot_custom/1_osoyoo.png)
 
 His main characteristics are: 
@@ -11,6 +11,7 @@ His main characteristics are:
 - **four omnidirectional wheels**: allow the robot to move in any desired direction
 - **LIDAR (Laser Imaging Detection and Ranging)**: determines ranges by targeting an object or surface via an infrared laser, will allow object detection
 - **two Logitech C270 cameras**: allow visualization of the rubot's environment via 3D visualizations software tools
+- **two batteries (5V and 12V)** : will power all sensors and actuators
 
 
 In this document we will describe:
@@ -25,6 +26,10 @@ In this document we will describe:
 
 ## **1. Device structure**
 
+The device is conformed by the rUBot_2.0 prototype and the Air quality control circuit.
+
+**a) rUBot model generation, spawn in a world environment and control** 
+
 First of all, we have to create the "rubot_mecanum_description" package where we will create the rUBot model. In case you want to create it from scratch, type:
 ```shell
 cd ~/Desktop/ROS_github/rubot_mecanum_ws/src
@@ -32,6 +37,47 @@ catkin_create_pkg rubot_mecanum_description rospy
 cd ..
 catkin_make
 ```
+
+Then open the .bashrc file and verify the environment variables and source to the proper workspace:
+```shell
+source ~/Desktop/ROS_github/rubot_mecanum_ws/devel/setup.bash
+```
+
+Once the model is created, we can simulate the robot's behavour in a virtual environment close to the real one. For this purpose, we will create a new gazebo.launch file to spaen the robot in an empty world:
+```shell
+roslaunch rubot_mecanum_description gazebo.launch
+roslaunch rubot_mecanum_description display.launch
+```
+
+There's also the option to generate a personalised world via Gazebo. After building the desired world, we can spawn the rUBot in it by creating a "nexus_world.launch" file:
+```shell
+roslaunch rubot_mecanum_description rubot_world.launch
+```
+
+As a final step, we can create a ROS Package "rubot_control" to perform the autonomous navigation:
+```shell
+cd ~/rubot_mecanum_ws/src
+catkin_create_pkg rubot_control rospy std_msgs sensor_msgs geometry_msgs nav_msgs
+cd ..
+catkin_make
+```
+The movement of the robot can also be controlled by:
+- keyboard or a joypad
+- pragramatically in python creating a "/rubot_nav" node
+
+**b) Air quality control circuit structure**
+
+The air quality control circuit's main goal is to detect when the CO2 air concentration is too high so it can switch on an ozone generator that will help purify the air and bring the CO2 levels back to safe values. This data will be available to users via an Arduino IoT Cloud and accessible via pc an mobile devices. The circuit will be integrated into a PCB and it will be powered by the 5V rUBot's battery:
+
+- a 30 pin ESP32 VROOM that will control all the circuit's components via an Arduino Code
+- three different air data collection sensors (DHT22, MQ2, SDC30)
+- an ozone generator 
+- a MOSFET transistor that will help switch on and off the ozone generator
+- an LED that will indicate when the ozone generator is on
+
+This circuit will be mounted on top of the rUBot's platform and will be fetching data while the rUBot moves. 
+
+
 ## **2. Web Arduino IoT Cloud SW description**
 
 To code this project's Arduino software, we will use the Arduino IoT Cloud web. This web is a platform that allows any user to create IoT Arduino projects and allows code writing, code uploading to any Arduino device that has Wi-Fi connection and data visualization thanks to a serial monitor or widget dashboard. The main advantage of this platform is that data will refresh and synchronise with the Arduino board even is the board is not connected to the PC. In other words, if the Arduino board is connected to a Wi-Fi network, the dashboard's data will continue to update in real time thanks to its connection to the IoT. To access the Arduino Cloud web, we will have to sign in into the Cloud and create an Arduino account.  
