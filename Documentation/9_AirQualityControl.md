@@ -28,9 +28,9 @@ In this document we will describe:
 
 The device is conformed by the rUBot_2.0 prototype and the Air quality control circuit. Here's the side and front view of the robot:
 
-![](./Images/air_quality/rubot 2.0 side view.PNG)
+![](./Images/air_quality/side.PNG)
 
-![](./Images/air_quality/rubot 2.0 front view.PNG)
+![](./Images/air_quality/front.PNG)
 
 **a) rUBot model generation, spawn in a world environment and control** 
 
