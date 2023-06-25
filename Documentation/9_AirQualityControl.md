@@ -157,20 +157,30 @@ In this project's air quality control circuit, three different sensors will be u
 
 ![](./Images/air_quality/mq2.PNG)
 
-- The first sensor used is an MQ2 gas sensor,  that detects concentrations of different air gases such as propane, methane, hydrogen, alcohol, smoke and carbon monoxide. The gas' concentration is measured using a voltage divider network and the values are given in ppm (parts per million)
+- The first sensor used is an MQ2 gas sensor,  that detects concentrations of different air gases such as propane, methane, hydrogen, alcohol, smoke and carbon monoxide. The gas' concentration is measured using a voltage divider network and the values are given in ppm (parts per million). Available at: https://www.amazon.es/AZDelivery-sensor-Calidad-M%C3%B3dulo-Arduino/dp/B07CYYB82F/ref=sr_1_1?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=34GD0GBFA648V&keywords=mq2&qid=1687717999&sprefix=mq2%2Caps%2C103&sr=8-1
+There's no need to include any library to the IoT Cloud sketch regarding this sensor since we'll use just a digital pin to collect the data.
 
 **DHT22 temperature and humidity sensor**: 
 
 ![](./Images/air_quality/dht22.PNG)
 
-- The second sensor is a temperature and humidity sensor, the DHT22. It offers a high precision data acquisiton and stability due to it's temperature compensation and calibration. Humidity values are given in percentage units (%) and temperature values are given in degrees celcius (ºC).
+- The second sensor is a temperature and humidity sensor, the DHT22. It offers a high precision data acquisiton and stability due to it's temperature compensation and calibration. Humidity values are given in percentage units (%) and temperature values are given in degrees celcius (ºC). Available at: https://www.amazon.es/temperatura-humedad-Arduino-Raspberry-AZDelivery/dp/B078SVZB1X/ref=sr_1_1_sspa?adgrpid=57308952958&hvadid=275390295305&hvdev=c&hvlocphy=1005424&hvnetw=g&hvqmt=e&hvrand=12130751386376322879&hvtargid=kwd-295796280630&keywords=dht22&qid=1687717976&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1
+The library needed to configurate the sensor on to the IoT Cloud sketch is:
+
+```shell
+#include <DHT.h>
+```
 
 **SCD30 CO2, temperature and humidity sensor**:
 
 ![](./Images/air_quality/scd30.PNG)
 
-- The third and biggest sensor is the SCD30 Sensirion sensor, that measures carbon dioxide, temperature and humidity air values. The CO2 levels are given in ppm. Its main characteristic is its small size and height, which allows easy integration into different applications.
+- The third and biggest sensor is the SCD30 Sensirion sensor, that measures carbon dioxide, temperature and humidity air values. The CO2 levels are given in ppm. Its main characteristic is its small size and height, which allows easy integration into different applications. Available at: https://es.rs-online.com/web/p/circuitos-integrados-de-sensores-de-temperatura-y-humedad/1720552
 This particular sensor will be key for the whole air quality control device since the CO2 air concentration value is what will switch the ozone generator on and off.
+
+```shell
+#include <SparkFun_SCD30_Arduino_Library.h>
+```
 
 ## **4. Ozone generator device description**
 
@@ -181,6 +191,10 @@ The ozone generator used in this application is the "Handy Ozone Generator" by F
 **Handy Ozone Generator**: 
 
 ![](./Images/air_quality/generador_ozo.PNG)
+
+To be able to connect to the 5V pin from the ESP32 and be able to build the needed circuit, it is necessary to open the ozone generator and have direct access to the VCC and GND cables. With this modification, the cables can be directly welded into the circuit:
+
+![](./Images/air_quality/cableozono.PNG)
 
 The device will be switched off by default, and will only be switched on when the CO2 levels detected by the SCD30 sensor are above a chosen threshold value. The CO2 air value is usually around 800 ppm in normal conditions, and will be considered harmful for health when it reaches values above 1200 ppm (for this specific application and its scope). Every time the 1200 ppm threshold is surpassed, the ozone generator will switch on and start to purify air, when the CO2 value goes down again under 1200 ppm, the ozone generator will switch off.
 
