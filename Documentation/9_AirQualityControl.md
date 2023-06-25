@@ -75,13 +75,39 @@ The movement of the robot can also be controlled by:
 
 The air quality control circuit's main goal is to detect when the CO2 air concentration is too high so it can switch on an ozone generator that will help purify the air and bring the CO2 levels back to safe values. This data will be available to users via an Arduino IoT Cloud and accessible via pc an mobile devices. The circuit will be integrated into a PCB and it will be powered by the 5V rUBot's battery:
 
-- a 30 pin ESP32 VROOM that will control all the circuit's components via an Arduino Code
-- three different air data collection sensors (DHT22, MQ2, SDC30)
-- an ozone generator 
-- a MOSFET transistor that will help switch on and off the ozone generator
-- an LED that will indicate when the ozone generator is on
+- a 30 pin ESP32 VROOM that will control all the circuit's components via an Arduino Code. Available at: https://uelectronics.com/producto/devkitv1-esp32-modulo-wifi-bluetooth-esp32-arduino/
+  
+![](./Images/air_quality/esp32.PNG)
 
-This circuit will be mounted on top of the rUBot's platform and will be fetching data and generating ozone when needed while the rUBot moves. 
+- three different air data collection sensors (DHT22, MQ2, SDC30).
+
+DHT22, available at: https://www.amazon.es/temperatura-humedad-Arduino-Raspberry-AZDelivery/dp/B078SVZB1X/ref=sr_1_1_sspa?adgrpid=57308952958&hvadid=275390295305&hvdev=c&hvlocphy=1005424&hvnetw=g&hvqmt=e&hvrand=12130751386376322879&hvtargid=kwd-295796280630&keywords=dht22&qid=1687717976&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1
+
+![](./Images/air_quality/dht22.PNG)
+
+MQ2, available at: https://www.amazon.es/AZDelivery-sensor-Calidad-M%C3%B3dulo-Arduino/dp/B07CYYB82F/ref=sr_1_1?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=34GD0GBFA648V&keywords=mq2&qid=1687717999&sprefix=mq2%2Caps%2C103&sr=8-1
+
+![](./Images/air_quality/mq2.PNG)
+
+SDC30, available at: https://es.rs-online.com/web/p/circuitos-integrados-de-sensores-de-temperatura-y-humedad/1720552
+
+![](./Images/air_quality/sdc30.PNG)
+
+- ozone generator Feel Lagom. Available at: https://www.amazon.es/dp/B09K7T8Q26?ref_=cm_sw_r_apan_dp_CW33CC2324GQ4V5H54TZ
+
+![](./Images/air_quality/handy.PNG)
+  
+- MOSFET transistor IRF520N that will help switch on and off the ozone generator. Available at: https://www.amazon.es/IRF520N-MOSFET-220AB-Transsistor-controlador/dp/B07F1S947C
+  
+![](./Images/air_quality/mosfet.PNG)
+
+- an LED that will indicate when the ozone generator is on. Available at: https://es.farnell.com/multicomp/mcl053gd/led-5-mm-36-verde/dp/1581138?cjevent=76f3148d138711ee802ae9690a18ba72&cjdata=MXxZfDB8WXww&CMP=AFC-CJ-ES-8280252&gross_price=true&source=CJ
+
+![](./Images/air_quality/led.PNG)  
+
+This circuit will be mounted on top of the rUBot's platform and will be fetching data and generating ozone when needed while the rUBot moves. The schematic of the circuit including all needed elements is:
+
+![](./Images/air_quality/schematic.PNG)
 
 
 ## **2. Web Arduino IoT Cloud SW description**
