@@ -112,7 +112,10 @@ This circuit will be mounted on top of the rUBot's platform and will be fetching
 
 ## **2. Web Arduino IoT Cloud SW description**
 
-To code this project's Arduino software, we will use the Arduino IoT Cloud web. This web is a platform that allows any user to create IoT Arduino projects and allows code writing, code uploading to any Arduino device that has Wi-Fi connection and data visualization thanks to a serial monitor or widget dashboard. The main advantage of this platform is that data will refresh and synchronise with the Arduino board even is the board is not connected to the PC. In other words, if the Arduino board is connected to a Wi-Fi network, the dashboard's data will continue to update in real time thanks to its connection to the IoT. To access the Arduino Cloud web, we will have to sign in into the Cloud and create an Arduino account.  
+To code this project's Arduino software, we will use the Arduino IoT Cloud web. This web is a platform that allows any user to create IoT Arduino projects and allows code writing, code uploading to any Arduino device that has Wi-Fi connection and data visualization thanks to a serial monitor or widget dashboard. The main advantage of this platform is that data will refresh and synchronise with the Arduino board even is the board is not connected to the PC. In other words, if the Arduino board is connected to a Wi-Fi network, the dashboard's data will continue to update in real time thanks to its connection to the IoT. To access the Arduino Cloud web, we will have to sign in into the Cloud and create an Arduino account at: https://cloud.arduino.cc/home/
+Then, we'll have to select the "IoT Cloud" app. 
+
+**Before starting a project, it is important to download the Arduino Create Agent. This agent will help detect the Arduino board connected to our pc and allow the device's configuration.** The steps for the installation of the Arduino Create Agent are available at https://support.arduino.cc/hc/en-us/articles/360014869820-Install-the-Arduino-Create-Agent.
 
 ![](./Images/air_quality/IOT_CLOUD.PNG)
 
@@ -120,11 +123,11 @@ To code this project's Arduino software, we will use the Arduino IoT Cloud web. 
 
 ![](./Images/air_quality/device_configuration.PNG)
 
-To configure the device, we will have to choose the "Set up a 3rd Party device" option. 
+To configure the device, we will have to choose the "Set up a 3rd Party device" option. Then, we'll specify the device stype we're using, in this case, the ESP32. Then, we'll select the device's model, in this case the ESP32 DEV MODULE. When these steps are done, the device will be configured onto our Arduino IoT Cloud and a window will pop up indicating the Secret Key of our device. **This Secret Key will NOT always be available, it depends on the device. For example, for the MKR1010 there are no Secret Keys needed.**
 
 ![](./Images/air_quality/DEVICE_CONFIGURATION_1.PNG)
 
- **2.** Then, we can create a new Thing. In the Thing overview, we will have to configurate what Arduino device will be used, the Wi-Fi network we want to connect to and create variables that we can monitor and control. All changes made in the Thing overview will be automatically generated into the sketch file.
+ **2.** Then, we can create a new Thing. In the Thing overview, we will have to configurate what Arduino device will be used, the Wi-Fi network we want to connect to and create variables that we can monitor and control. This is also the step where we'll need to introduce the Secret Key we saved when we were configurating the device onto the Cloud. All changes made in the Thing overview will be automatically generated into the sketch file.
 
 ![](./Images/air_quality/thing.PNG)
 
@@ -144,7 +147,7 @@ It is important to link the widgets to our Thing's variables so data can be moni
 
 ![](./Images/air_quality/widget_settings.PNG)
 
-**Extra step**: If we want to take it to the next level, we can also download the IoT Remote app into our phones so we can monitor data without the need of a pc. The only thing needed is connection to a Wi-Fi network and to log in to the Arduino app with our Arduino account. Here's the dashboard view from the mobile app:
+**Extra step**: If we want to take it to the next level, we can also download the **IoT Remote app** into our phones so we can monitor data without the need of a pc. The only thing needed is connection to a Wi-Fi network and to log in to the Arduino app with our Arduino account. From the mobile app we can only view the dashboards already created via the Arduino IoT Cloud, in other words, we can't create new dashboards or edit existing ones via the IoT Remote app. All configuration must be done via the Arduino IoT Cloud. Here's the dashboard view from the mobile app:
 
 ![](./Images/air_quality/movil.PNG)
 
