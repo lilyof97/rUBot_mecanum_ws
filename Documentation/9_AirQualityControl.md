@@ -123,7 +123,7 @@ Then, we'll have to select the "IoT Cloud" app.
 
 ![](./Images/air_quality/device_configuration.PNG)
 
-To configure the device, we will have to choose the "Set up a 3rd Party device" option. Then, we'll specify the device stype we're using, in this case, the ESP32. Then, we'll select the device's model, in this case the ESP32 DEV MODULE. When these steps are done, the device will be configured onto our Arduino IoT Cloud and a window will pop up indicating the Secret Key of our device. **This Secret Key will NOT always be available, it depends on the device. For example, for the MKR1010 there are no Secret Keys needed.**
+To configure the device, we will have to choose the "Set up a 3rd Party device" option. Then, we'll specify the device stype we're using, in this case, the ESP32. Then, we'll select the device's model, in this case the ESP32 DEV MODULE. When these steps are done, the device will be configured onto our Arduino IoT Cloud and a window will pop up indicating the Secret Key of our device. This key will be needed to configure the network of the associated Thing. **This Secret Key will NOT always be available, it depends on the device. For example, for the MKR1010 there are no Secret Keys needed.**
 
 ![](./Images/air_quality/DEVICE_CONFIGURATION_1.PNG)
 
@@ -200,6 +200,10 @@ To be able to connect to the 5V pin from the ESP32 and be able to build the need
 ![](./Images/air_quality/cableozono.PNG)
 
 The device will be switched off by default, and will only be switched on when the CO2 levels detected by the SCD30 sensor are above a chosen threshold value. The CO2 air value is usually around 800 ppm in normal conditions, and will be considered harmful for health when it reaches values above 1200 ppm (for this specific application and its scope). Every time the 1200 ppm threshold is surpassed, the ozone generator will switch on and start to purify air, when the CO2 value goes down again under 1200 ppm, the ozone generator will switch off.
+
+Here's the schematic of the application:
+
+![](./Images/air_quality/schematic_generator.PNG)
 
 ## **5. PCB Board design**
 
