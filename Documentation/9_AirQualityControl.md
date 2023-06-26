@@ -199,7 +199,8 @@ To be able to connect to the 5V pin from the ESP32 and be able to build the need
 
 ![](./Images/air_quality/cableozono.PNG)
 
-The device will be switched off by default, and will only be switched on when the CO2 levels detected by the SCD30 sensor are above a chosen threshold value. The CO2 air value is usually around 800 ppm in normal conditions, and will be considered harmful for health when it reaches values above 1200 ppm (for this specific application and its scope). Every time the 1200 ppm threshold is surpassed, the ozone generator will switch on and start to purify air, when the CO2 value goes down again under 1200 ppm, the ozone generator will switch off.
+The device will be switched off by default, and will only be switched on when the CO2 levels detected by the SCD30 sensor are above a chosen threshold value. The generator will switch on thanks to a digital pin from the ESP32 (pin D23) that will have a HIGH or LOW value depending on the CO2 air concentration. If it's high, the pin will be HIGH and the generator will switch on. If it's low, the pin will be LOW and the generator will switch off. This ON/OFF behaviour will be controlled by a N channel MOSFET, the IRF520N, that will play the role of a switch controller.
+The CO2 air value is usually around 800 ppm in normal conditions, and will be considered harmful for health when it reaches values above 1200 ppm (for this specific application and its scope). Every time the 1200 ppm threshold is surpassed, the ozone generator will switch on and start to purify air, when the CO2 value goes down again under 1200 ppm, the ozone generator will switch off.
 
 Here's the schematic of the application:
 
