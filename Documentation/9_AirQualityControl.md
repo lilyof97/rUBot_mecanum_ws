@@ -200,6 +200,10 @@ The device will be switched off by default, and will only be switched on when th
 
 ## **5. PCB Board design**
 
+The PCB Board design will be created from the air quality circuit schematic seen before on point number 2. of this document:
+
+![](./Images/air_quality/schematic.PNG)
+
 To design this circuit's PCD Board, various factors have to be taken into consideration. The first and most important one, the ESP32 Arduino has to be positioned in a way that allows its connection to every component that conforms the board, this means that it has to be placed at the center of the board **(1)**. Once the ESP32 is placed, the different sensors can be positioned around it. 
 
 The sensors' board position depend on their connections to the ESP32. The DHT22 sensor has connections to the right-side of the Arduino (pins 3V3 to GPIO23) and the MQ2 has connections to the left-side of the Arduino (pins VIN to RESET). Knowing this, the DTH22 will be placed on the "lower" side of the Arduino **(2)** and the MQ2 on the "upper" side **(3)**. 
