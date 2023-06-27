@@ -419,3 +419,23 @@ These are the flux diagrams of the Air quality control circuit Arduino Code:
 
 ![](./Images/air_quality/readvalues.PNG)   
 
+## **7. Experimental results**
+
+To test the air quality control PCB, it needs to be put on a contaminated environment to be properly tested. Since this option is not available in our laboratory environment, to simulate a contaminated room we’ll blow air on to the PCB so the sensors can detect a considerable CO2 air concentration change and switch on the ozone generator. For this test, when the concentration of CO2 is greater than 1000 ppm, the LED will switch on indicating that the ozone generator is generating O3.
+
+First of all, we’ll check that the sensors are properly working by switching on the whole application and observing the data on our widget dashboard:
+
+![](./Images/air_quality/42.PNG)   
+
+Then, we’ll blow air on top of the PCB during a few seconds. Right after that, we can see temperature, humidity, gas and CO2 values increase more or less drastically:
+
+![](./Images/air_quality/43.PNG)  
+
+Right at the same time, we can see the LED has switched on. Furthermore, the ozone generator starts to make a buzzing sound which is the final indicator that the generation of O3 is taking place.
+
+![](./Images/air_quality/44.PNG)  
+
+After ten to twenty seconds have passed, the CO2 values return back to normal and the LED and ozone generator switch off. These results show how the air quality PCB is working properly and the Arduino IoT Cloud web is a reliable platform to create applications that require data collection.
+
+![](./Images/air_quality/45.PNG)  
+
