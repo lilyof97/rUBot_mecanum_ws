@@ -32,44 +32,23 @@ The device is conformed by the rUBot_2.0 prototype and the Air quality control c
 
 ![](./Images/air_quality/front.PNG)
 
-**a) rUBot model generation, spawn in a world environment and control** 
+**a) rUBot 2.0 self-navigation** 
 
-First of all, we have to create the "rubot_mecanum_description" package where we will create the rUBot model. In case you want to create it from scratch, type:
+To be able to read air quality data from the environment, we'll need the robot to be autonomous which means it will have to move by itself thanks to a routine created by the user. The first step is to install and bringup the software and hardware from the robot, which is exactly the same as the bringup from the rUBot 1.0 that can be found at https://github.com/manelpuig/rUBot_mecanum_ws/tree/master/Documentation.
+
+Then, we'll have to perform the autonomous navigation routine, which is created in a .py file called "rubot_self_nav.py". To launch this routine, we have to create a .launch file called rubot_self_nav.launch. In this routine the robot is able to detect the objects present on its environment thanks to the LIDAR sensor and change its trajectory when it is needed. First, we bring up the hardware:
+
 ```shell
-cd ~/Desktop/ROS_github/rubot_mecanum_ws/src
-catkin_create_pkg rubot_mecanum_description rospy
-cd ..
-catkin_make
+roslaunch rubot_control rubot_bringup_hw.launch
 ```
 
-Then open the .bashrc file and verify the environment variables and source to the proper workspace:
+Then we have to open a new terminal to launch the .launch file from the self navigation routine:
+
 ```shell
-source ~/Desktop/ROS_github/rubot_mecanum_ws/devel/setup.bash
+roslaunch rubot_control rubot_self_nav.launch
 ```
 
-Once the model is created, we can simulate the robot's behavour in a virtual environment close to the real one. For this purpose, we will create a new gazebo.launch file to spaen the robot in an empty world:
-```shell
-roslaunch rubot_mecanum_description gazebo.launch
-roslaunch rubot_mecanum_description display.launch
-```
-
-There's also the option to generate a personalised world via Gazebo. After building the desired world, we can spawn the rUBot in it by creating a "nexus_world.launch" file:
-```shell
-roslaunch rubot_mecanum_description rubot_world.launch
-```
-
-As a final step, we can create a ROS Package "rubot_control" to perform the autonomous navigation:
-```shell
-cd ~/rubot_mecanum_ws/src
-catkin_create_pkg rubot_control rospy std_msgs sensor_msgs geometry_msgs nav_msgs
-cd ..
-catkin_make
-```
-The movement of the robot can also be controlled by:
-- keyboard or a joypad
-- pragramatically in python creating a "/rubot_nav" node
-
-![](./Images/1_mecanum_bringup.png)
+Once these steps are done, the rUBot will start to navigate any given room and desinfect the air when needed thanks to the air quality control circuit.
 
 **b) Air quality control circuit structure**
 
