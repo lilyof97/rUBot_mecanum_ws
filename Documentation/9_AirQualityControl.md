@@ -36,7 +36,7 @@ The device is conformed by the rUBot_2.0 prototype and the Air quality control c
 
 To be able to read air quality data from the environment, we'll need the robot to be autonomous which means it will have to move by itself thanks to a routine created by the user. The first step is to install and bringup the software and hardware needed to connect to the robot, which is exactly the same as the bringup from the rUBot 1.0 that can be found at https://github.com/manelpuig/rUBot_mecanum_ws/tree/master/Documentation.
 
-Then, we'll have to perform the autonomous navigation routine, which is created in a .py file called "rubot_self_nav.py". To launch this routine, we have to create a .launch file called rubot_self_nav.launch. In this routine the robot is able to detect the objects present on its environment thanks to the LIDAR sensor and change its trajectory when it is needed. First, we bring up the hardware:
+Then, we'll have to perform the autonomous navigation routine, which is created in a .py file called "rubot_self_nav.py". To launch this routine, we have to create a .launch file called "rubot_self_nav.launch". In this routine the robot is able to detect the objects present on its environment thanks to the LIDAR sensor and change its trajectory when it is facing an obstacle. First, we bring up the hardware:
 
 ```shell
 roslaunch rubot_control rubot_bringup_hw.launch
